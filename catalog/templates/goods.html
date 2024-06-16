@@ -1,7 +1,8 @@
 {% load static %}
+{% load my_tags %}
 <!doctype html>
 <html lang="ru" data-bs-theme="auto">
-  <head><script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=BonHaT0Y_pvysdTSuAFjGuHavTGrpMR3Luub0KyZ7ZAOAxDf2hcbwWOUaX5uU0KA4i_arS2ibf-iLj90OlcVR6ffxZFedyiq65xC6n9IkIY" charset="UTF-8"></script><script src="{% static 'js/color-modes.js' %}"></script>
+  <head><script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=BonHaT0Y_pvysdTSuAFjGuHavTGrpMR3Luub0KyZ7ZAOAxDf2hcbwWOUaX5uU0KA4i_arS2ibf-iLj90OlcVR6ffxZFedyiq65xC6n9IkIY" charset="UTF-8"></script><script src="{% static 'admin/js/color-modes.js' %}"></script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -160,35 +161,7 @@
 
 
 <header data-bs-theme="dark">
-  <div class="collapse text-bg-dark" id="navbarHeader">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-8 col-md-7 py-4">
-          <h4>О нас</h4>
-          <p class="text-body-secondary">Добавьте информацию об альбоме ниже, авторе или любом другом фоновом контексте. Составьте несколько предложений, чтобы люди могли почерпнуть полезные сведения. Затем свяжите их с сайтами социальных сетей или с контактной информацией.</p>
-        </div>
-        <div class="col-sm-4 offset-md-1 py-4">
-          <h4>Контакты</h4>
-          <ul class="list-unstyled">
-            <li><a href="#" class="text-white">Подписать на Twitter</a></li>
-            <li><a href="#" class="text-white">Лайк на Facebook</a></li>
-            <li><a href="#" class="text-white">Напишите мне</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="navbar navbar-dark bg-dark shadow-sm">
-    <div class="container">
-      <a href="#" class="navbar-brand d-flex align-items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-        <strong>Альбом</strong>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Переключить навигацию">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </div>
-  </div>
+{% includes 'includes/inc_menu.html' %}
 </header>
 
 <main>
@@ -196,8 +169,8 @@
   <section class="py-5 text-center container">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Пример альбома</h1>
-        <p class="lead text-body-secondary">Что-то краткое и ведущее о коллекции ниже - ее содержание, создатель и т.д. Сделайте ее короткой и интересной, но не слишком короткой, чтобы люди просто не пропустили ее полностью.</p>
+        <h1 class="fw-light">Список товаров</h1>
+        <p class="lead text-body-secondary">Товары в магазине</p>
         <p>
           <a href="#" class="btn btn-primary my-2">Главный призыв к действию</a>
           <a href="#" class="btn btn-secondary my-2">Вторичное действие</a>
@@ -206,29 +179,8 @@
     </div>
   </section>
 
-  <div class="album py-5 bg-body-tertiary">
-    <div class="container">
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        {% for prod in product %}
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Эскиз" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Эскиз</text></svg>
-            <div class="card-body">
-              <p class="card-text">{{ prod.name }}</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Смотреть</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Редактировать</button>
-                </div>
-                <small class="text-body-secondary">9 мин</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-      </div>
-    </div>
-  </div>
+{% block content %}
+{% endblock %}
 
 </main>
 
