@@ -10,9 +10,13 @@ def contacts(request):
     return render(request, 'contacts.html')
 
 
+def goods(request):
+    return render(request, 'goods.html')
+
+
 def goods_list(request):
-    goods = Product.objects.all()
-    context = {'product': goods}
+    good = Product.objects.all()
+    context = {'product': good}
     return render(request, 'product_list.html', context)
 
 
