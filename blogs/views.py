@@ -6,7 +6,7 @@ from blogs.models import BlogPost
 
 
 def blog_main(request):
-    return render(request, 'blog_pages/blog_main_page.html')
+    return render(request, 'blog_pages/blogpost_main_page.html')
 
 
 class BlogPostListView(ListView):
@@ -26,18 +26,18 @@ class BlogPostDetailView(DetailView):
 class BlogPostCreateView(CreateView):
     model = BlogPost
     fields = ("title", "slug", "description", "preview", "publication")
-    success_url = reverse_lazy('blog_pages:blog_list')
+    success_url = reverse_lazy('blog_pages:blogpost_list')
 
 
 class BlogPostUpdateView(UpdateView):
     model = BlogPost
     fields = ("title", "slug", "description", "preview", "publication")
-    success_url = reverse_lazy('blog_pages:blog_list')
+    success_url = reverse_lazy('blog_pages:blogpost_list')
 
     def get_success_url(self):
-        return reverse('blog_pages:product', args=[self.kwargs.get('pk')])
+        return reverse('blog_pages:post', args=[self.kwargs.get('pk')])
 
 
 class BlogPostDeleteView(DeleteView):
     model = BlogPost
-    success_url = reverse_lazy('blog_pages:blog_list')
+    success_url = reverse_lazy('blog_pages:blogpost_list')
