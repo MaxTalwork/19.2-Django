@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
-from django.utils.text import slugify
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from pytils.translit import slugify
 
 from blogs.models import BlogPost
 
@@ -37,9 +37,9 @@ class BlogPostCreateView(CreateView):
 
     def form_valid(self, form):
         if form.is_valid():
-            model = form.save()
-            model.slug = slugify(BlogPost.title)
-            model.save()
+            new_post = form.save()
+            new_post.slug = slugify(new_post.title)
+            new_post.save()
         return super().form_valid(form)
 
 
