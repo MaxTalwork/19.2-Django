@@ -5,12 +5,12 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from catalog.models import Product
 
 
-# def home(request):
-#     return render(request, 'home.html')
-#
-#
-# def contacts(request):
-#     return render(request, 'contacts.html')
+def home(request):
+    return render(request, 'catalog/home.html')
+
+
+def contacts(request):
+    return render(request, 'catalog/contacts.html')
 
 
 def goods(request):
