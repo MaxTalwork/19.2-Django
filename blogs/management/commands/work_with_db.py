@@ -9,9 +9,9 @@ class Command(BaseCommand):
     def json_read_categories():
         categories_list = []
         # Здесь мы получаем данные из фикстур с категориями
-        with open('blog_pages.json', mode='r', encoding='utf-8') as f:
+        with open('blogs.json', mode='r', encoding='utf-8') as f:
             for item in json.load(f):
-                if item["model"] == "blog_pages.category":
+                if item["model"] == "blogs.category":
                     new_cat = {'name': item['fields']['name'], 'description': item['fields']['description']}
                     categories_list.append(new_cat)
             print(categories_list)
@@ -21,9 +21,9 @@ class Command(BaseCommand):
     def json_read_products():
         # Здесь мы получаем данные из фикстур с продуктами
         prod_list = []
-        with open('blog_pages.json', mode='r', encoding='utf-8') as f:
+        with open('blogs.json', mode='r', encoding='utf-8') as f:
             for item in json.load(f):
-                if item["model"] == "blog_pages.product":
+                if item["model"] == "blogs.product":
                     new_prod = {'name': item['fields']['name'],
                                 'description': item['fields']['description'],
                                 'preview': item['fields']['preview'],
