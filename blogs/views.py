@@ -13,11 +13,10 @@ def blog_main(request):
 class BlogPostListView(ListView):
     model = BlogPost
 
-    def get_object(self, queryset=None):
-        self.object = super().get_object(queryset)
-        if self.object.publication is True:
-            self.object.save()
-            return self.object
+    def get_queryset(self, *args, **kwargs):
+        queryset = super().get_queryset(*args, **kwargs)
+        queryset = queryset.filter(publication=True)
+        return queryset
 
 
 class BlogPostDetailView(DetailView):
