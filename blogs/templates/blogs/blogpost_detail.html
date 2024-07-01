@@ -12,12 +12,11 @@
               <p class="card-text">{{ object.slug }} </p>
               <p class="card-text">{{ object.description }} </p>
 
-
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <a class="btn btn-primary" href="{% url 'blogs:blogpost_list' %}" role="button">Назад</a>
                 </div>
-                <small class="text-body-secondary">9 мин</small>
+                <small class="text-body-secondary">Просмотров: {{ object.views_counter }}</small>
               </div>
             </div>
           </div>
