@@ -11,6 +11,8 @@
               <p class="card-text">{{ object.name | truncatechars:100 }} </p>
               <p class="card-text">{{ object.category }} </p>
               <p class="card-text">{{ object.price }} руб </p>
+              <p class="card-text"> Просмотров: {{ object.views_counter }} </p>
+              <h1>{{ version_number }}</h1>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <a class="btn btn-primary" href="{% url 'catalog:product_list' %}" role="button">Назад</a>
