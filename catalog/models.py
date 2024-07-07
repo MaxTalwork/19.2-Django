@@ -65,7 +65,7 @@ class Version(models.Model):
 
     class Meta:
         verbose_name = "Версия"
-        verbose_name_plural = "Версия"
+        verbose_name_plural = "Верси"
         ordering = ["product", "version_number", "version_name", "current_version"]
 
     def __str__(self):
