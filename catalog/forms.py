@@ -3,6 +3,8 @@ from django.forms import ModelForm, BooleanField
 
 from catalog.models import Product, Version
 
+forbidden_words = ['казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция', 'радар']
+
 
 class StyleFormMixin(ModelForm):
     def __init__(self, *args, **kwargs):
@@ -20,8 +22,6 @@ class ProdForm(StyleFormMixin, ModelForm):
         exclude = ('views_counter',)
 
     def clean_name(self):
-        forbidden_words = ['казино', 'криптовалюта', 'крипта', 'биржа',
-                           'дешево', 'бесплатно', 'обман', 'полиция', 'радар']
         name = self.cleaned_data['name']
         for word in forbidden_words:
             if word in name:
@@ -29,8 +29,6 @@ class ProdForm(StyleFormMixin, ModelForm):
         return name
 
     def clean_description(self):
-        forbidden_words = ['казино', 'криптовалюта', 'крипта', 'биржа',
-                           'дешево', 'бесплатно', 'обман', 'полиция', 'радар']
         description = self.cleaned_data['description']
         for word in forbidden_words:
             if word in description:
