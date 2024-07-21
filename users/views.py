@@ -1,9 +1,7 @@
 import random
 import string
 
-from django.contrib.auth.views import PasswordResetView, PasswordResetConfirmView
-from django.contrib.messages.views import SuccessMessageMixin
-
+from django.contrib.auth.views import PasswordResetView
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy, reverse
@@ -38,10 +36,26 @@ class UserCreateView(CreateView):
         return super().form_valid(form)
 
 
-def email_verification(request, token):
+def email_verification(token):
     user = get_object_or_404(User, token=token)
     user.is_active = True
     user.save()
     return redirect(reverse('users:login'))
 
 
+def reset_password(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        user = get_object_or_404(User, email=email)
+        characters = string.ascii_letters + string.digits + string.punctuation
+        password = ''.join(random.choice(characters) for _ in range(10))
+        user.set_password(password)
+        user.save()
+        send_mail(
+            subject='Сброс пароля',
+            message=f' Ваш новый пароль {password}',
+            from_email=EMAIL_HOST_USER,
+            recipient_list=[user.email]
+           )
+        return redirect(reverse('users:login'))
+    return render(request, 'users/reset_password.html')

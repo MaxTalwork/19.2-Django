@@ -13,11 +13,25 @@
             <button type="submit" class="btn btn-primary">
                 Войти
             </button>
-            <button type="submit" class="btn btn-primary"> Сбросить пароль
-                <a href=""></a>
+          </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="container">
+  <form class="row" method="post" enctype="multipart/form-data">
+    <div class="row">
+      <div class="col-6">
+          <div class="card-body">
+              <div class="card-body">
+              {% csrf_token %}
+            </div>
+            <button type="submit" class="btn btn-primary">
+                <a href="{% url 'users:reset_password' %}">Сбросить пароль</a>
             </button>
           </div>
       </div>
+    </div>
   </form>
 </div>
 {% endblock %}
