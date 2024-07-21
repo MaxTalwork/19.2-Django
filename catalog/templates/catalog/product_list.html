@@ -23,8 +23,11 @@
                     </p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
+                    {% if perms.catalog.can_edit_description and perms.catalog.can_edit_category and perms.catalog.can_edit_publication or user == prod.owner %}
+                    <a class="btn btn-primary" href="{% url 'catalog:product_update' prod.pk %}" role="button">Редактировать</a>
+                    {% endif %}
                   <a class="btn btn-primary" href="{% url 'catalog:product' prod.pk %}" role="button">Подробная информация</a>
-                  <a class="btn btn-primary" href="{% url 'catalog:product_update' prod.pk %}" role="button">Редактировать</a>
+
                   <a class="btn btn-primary" href="{% url 'catalog:product_delete' prod.pk %}" role="button">Удалить</a>
                 </div>
               </div>
